@@ -3,6 +3,11 @@ package fr.pizzeria.console;
 import java.util.Scanner;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Lisa
+ *
+ */
 
 public class PizzeriaAdminConsoleApp {
 
