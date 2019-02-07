@@ -5,6 +5,12 @@ import java.util.Scanner;
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Lisa
+ *Sert a appeller la classe de modification de pizza si le code est trouvé et les différentes infos remplies
+ */
+
 public class ModifierPizzaService extends MenuService {
 
 	

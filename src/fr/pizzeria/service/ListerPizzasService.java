@@ -5,6 +5,14 @@ import java.util.Scanner;
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Lisa
+ * 
+ * Sert à appeler et afficher la liste des pizzas
+ *
+ */
+
 public class ListerPizzasService extends MenuService {
 
 	

@@ -5,7 +5,15 @@ import java.util.Scanner;
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 
+ * @author Lisa
+ * Va appeler la méthode d'ajout de pizza apres avoir réclamer toutes les infos nécessaires
+ *
+ */
+
 public class AjouterPizzaService extends MenuService {
+
 	
 	public void executeUC(PizzaMemDao pizzaMemDao, Scanner questionUser){
 	

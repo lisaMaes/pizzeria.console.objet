@@ -37,35 +37,13 @@ public class PizzeriaAdminConsoleApp {
 			
 			a = questionUser.nextInt() ;
 		
+			MenuService menuService = MenuServiceFactory.getService(a);
 			
-
-			//Liste des pizzas
-			if(a == 1){		
+			if(menuService != null){
 				
-				ListerPizzasService listerPizzasService = new ListerPizzasService();
-				
-				listerPizzasService.executeUC(pizzaMemDao, questionUser);
-				
-				
-			//Ajouter une pizza
-			}else if(a == 2){
-				
-				AjouterPizzaService ajouterPizzaService = new AjouterPizzaService();
-			
-				ajouterPizzaService.executeUC(pizzaMemDao, questionUser);
-				
-			//Mise à jour d'une pizza
-			}else if(a == 3){
-				
-				ModifierPizzaService modifierPizzaService = new ModifierPizzaService();
-				
-				modifierPizzaService.executeUC(pizzaMemDao, questionUser);
-			
-			}else if(a == 4){
-				
-				SupprimerPizzaService supprimerPizzaService = new SupprimerPizzaService();		
-				supprimerPizzaService.executeUC(pizzaMemDao, questionUser);		
+				menuService.executeUC(pizzaMemDao, questionUser);
 			}
+
 			
 		}while(a != 99);
 		//On boucle tant que l'utilisateur ne tape pas 99

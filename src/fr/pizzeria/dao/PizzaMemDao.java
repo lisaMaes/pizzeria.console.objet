@@ -11,7 +11,7 @@ import fr.pizzeria.model.Pizza;
 public class PizzaMemDao implements IPizzaDao{
 
 	
-	/**Intialise les pizzas si elles exxistent pas
+	/**Intialise les pizzas si elles existent pas
 	 * Renvoi un tableau d'objet listant toutes les pizzas
 	 * @return pizzaArray
 	 */

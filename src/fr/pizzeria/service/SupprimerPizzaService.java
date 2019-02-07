@@ -4,6 +4,14 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaMemDao;
 
+/**
+ * 
+ * @author Lisa
+ * 
+ * Sert à appeler la methode de suppresion de la pizza en fonction du code taper par l'utilisteur
+ *
+ */
+
 public class SupprimerPizzaService extends MenuService {
 
 	public void executeUC(PizzaMemDao pizzaMemDao, Scanner questionUser) {
