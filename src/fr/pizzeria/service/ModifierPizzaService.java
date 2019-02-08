@@ -43,7 +43,7 @@ public class ModifierPizzaService extends MenuService {
 				
 				if(pizzaExists == true){
 					
-					pizzaMemDao.updatePizza(code ,new Pizza (newCode, newLibelle, newPrix, pizzaMemDao.findAllPizzas()));
+					pizzaMemDao.updatePizza(code, new Pizza (newCode, newLibelle, newPrix));
 				}else{
 					
 					System.out.println("Pizza inconnue. Veuillez retaper le code");

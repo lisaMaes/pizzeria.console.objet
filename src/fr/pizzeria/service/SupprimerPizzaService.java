@@ -8,7 +8,7 @@ import fr.pizzeria.dao.PizzaMemDao;
  * 
  * @author Lisa
  * 
- * Sert à appeler la methode de suppresion de la pizza en fonction du code taper par l'utilisteur
+ * Sert à appeler la methode de suppression de la pizza en fonction du code taper par l'utilisteur
  *
  */
 
@@ -42,8 +42,6 @@ public class SupprimerPizzaService extends MenuService {
 		}while (pizzaExists == false);
 		
 		System.out.println("Pizza Supprimée");
-
-
 		
 	}
 

@@ -1,5 +1,6 @@
 /**
- * Objet pizza avec deux methode de construction
+ * Objet pizza avec deux methodes de construction
+ * dont l'une sans l'id prevue pour l'incrémentation automatique en BDD
  */
 
 package fr.pizzeria.model;
@@ -19,15 +20,7 @@ public class Pizza {
 	 * @param listPizza array d'objets des pizza
 	 */
 	
-	public 	Pizza(String code, String libelle, double prix, Pizza[] listPizza){
-		
-		//trouve la taille du tableau
-		int i = listPizza.length;
-			
-	//va fixer l'id en décalant de -1 par rapport à la taille du tableau
-		//On prend l'id de la dernière entrée et j'ajoute un
-		this.id = (listPizza[i-1].id)+1;
-				
+	public 	Pizza(String code, String libelle, double prix){
 		
 		this.code = code;
 		this.libelle = libelle;

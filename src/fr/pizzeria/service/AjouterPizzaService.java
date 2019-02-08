@@ -1,5 +1,6 @@
 package fr.pizzeria.service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaMemDao;
@@ -42,7 +43,11 @@ public class AjouterPizzaService extends MenuService {
 			
 				if(pizzaExists == false){
 					
-					pizzaMemDao.saveNewPizza(new Pizza (code, libelle, prix, pizzaMemDao.findAllPizzas()));
+					List<Pizza> pizzaList = pizzaMemDao.findAllPizzas();
+					
+					int id = pizzaList.size();
+					
+					pizzaMemDao.saveNewPizza(new Pizza (id, code, libelle, prix));
 
 				}else{
 					System.out.println("Veuillez choisir un autre code celui ci existe déjà ...");	
