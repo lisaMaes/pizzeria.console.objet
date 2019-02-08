@@ -2,7 +2,8 @@ package fr.pizzeria.service;
 
 import java.util.Scanner;
 
-import fr.pizzeria.dao.PizzaMemDao;
+import fr.pizzeria.dao.IPizzaDao;
+
 
 /**
  * 
@@ -14,7 +15,7 @@ import fr.pizzeria.dao.PizzaMemDao;
 
 public class SupprimerPizzaService extends MenuService {
 
-	public void executeUC(PizzaMemDao pizzaMemDao, Scanner questionUser) {
+	public void executeUC(IPizzaDao iPizzaDao, Scanner questionUser) {
 	
 		boolean pizzaExists = false;
 		
@@ -27,11 +28,11 @@ public class SupprimerPizzaService extends MenuService {
 			
 			if(code != null){
 				
-				pizzaExists = pizzaMemDao.pizzaExists(code);
+				pizzaExists = iPizzaDao.pizzaExists(code);
 				
 				if(pizzaExists == true){
 					
-					pizzaMemDao.deletePizza(code);
+					iPizzaDao.deletePizza(code);
 				}else{
 					
 					System.out.println("Pizza inconnue. Veuillez retaper le code");

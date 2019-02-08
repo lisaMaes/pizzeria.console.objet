@@ -3,7 +3,7 @@ package fr.pizzeria.service;
 import java.util.List;
 import java.util.Scanner;
 
-import fr.pizzeria.dao.PizzaMemDao;
+import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -16,7 +16,7 @@ import fr.pizzeria.model.Pizza;
 public class AjouterPizzaService extends MenuService {
 
 	
-	public void executeUC(PizzaMemDao pizzaMemDao, Scanner questionUser){
+	public void executeUC(IPizzaDao iPizzaDao, Scanner questionUser){
 	
 		
 		boolean pizzaExists = true;
@@ -39,15 +39,15 @@ public class AjouterPizzaService extends MenuService {
 			//Si toute les valeurs on étaient renseignées
 			if(code != null && libelle != null && prix != 0){
 				
-				pizzaExists = pizzaMemDao.pizzaExists(code);
+				pizzaExists = iPizzaDao.pizzaExists(code);
 			
 				if(pizzaExists == false){
 					
-					List<Pizza> pizzaList = pizzaMemDao.findAllPizzas();
+					List<Pizza> pizzaList = iPizzaDao.findAllPizzas();
 					
 					int id = pizzaList.size();
 					
-					pizzaMemDao.saveNewPizza(new Pizza (id, code, libelle, prix));
+					iPizzaDao.saveNewPizza(new Pizza (id, code, libelle, prix));
 
 				}else{
 					System.out.println("Veuillez choisir un autre code celui ci existe déjà ...");	
