@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.*;
+
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -13,10 +15,10 @@ import fr.pizzeria.model.Pizza;
  *
  */
 
-public class AjouterPizzaService extends MenuService {
+public class AjouterPizzaService extends MenuService{
 
 	
-	public void executeUC(IPizzaDao iPizzaDao, Scanner questionUser){
+	public void executeUC(IPizzaDao iPizzaDao, Scanner questionUser) throws StockageException{
 	
 		
 		boolean pizzaExists = true;
@@ -40,17 +42,19 @@ public class AjouterPizzaService extends MenuService {
 			if(code != null && libelle != null && prix != 0){
 				
 				pizzaExists = iPizzaDao.pizzaExists(code);
-			
-				if(pizzaExists == false){
-					
+				
+				if(pizzaExists == false){					
+						
 					List<Pizza> pizzaList = iPizzaDao.findAllPizzas();
 					
 					int id = pizzaList.size();
 					
 					iPizzaDao.saveNewPizza(new Pizza (id, code, libelle, prix));
+												
 
 				}else{
-					System.out.println("Veuillez choisir un autre code celui ci existe déjà ...");	
+					
+					throw new SavePizzaException();
 				}
 			}
 			

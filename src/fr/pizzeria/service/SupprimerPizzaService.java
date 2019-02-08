@@ -3,6 +3,7 @@ package fr.pizzeria.service;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.*;
 
 
 /**
@@ -15,7 +16,7 @@ import fr.pizzeria.dao.IPizzaDao;
 
 public class SupprimerPizzaService extends MenuService {
 
-	public void executeUC(IPizzaDao iPizzaDao, Scanner questionUser) {
+	public void executeUC(IPizzaDao iPizzaDao, Scanner questionUser) throws StockageException {
 	
 		boolean pizzaExists = false;
 		
@@ -33,9 +34,10 @@ public class SupprimerPizzaService extends MenuService {
 				if(pizzaExists == true){
 					
 					iPizzaDao.deletePizza(code);
+					
 				}else{
 					
-					System.out.println("Pizza inconnue. Veuillez retaper le code");
+					throw new DeletePizzaException();
 				}
 								
 			}		

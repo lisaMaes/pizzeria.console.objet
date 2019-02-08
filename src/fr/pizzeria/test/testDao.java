@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMemDao;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
 public class testDao {
@@ -28,14 +29,14 @@ public class testDao {
 	}
 	
 	@Test
-	public void testAddNewPizza() {
+	public void testAddNewPizza() throws StockageException{
 		assertTrue("tableau vide", dao.findAllPizzas().isEmpty());
 		dao.saveNewPizza(new Pizza("TES", "test", 10));
 		assertTrue("Je dois trouver ma pizza", dao.pizzaExists("TES"));
 	}
 	
 	@Test
-	public void testUpdatePizza(){
+	public void testUpdatePizza() throws StockageException{
 		dao.saveNewPizza(new Pizza("TES", "test", 10));
 
 		dao.updatePizza("TES", new Pizza("TES", "essai", 12));
@@ -44,7 +45,7 @@ public class testDao {
 	}
 	
 	@Test
-	public void testDeletePizza(){
+	public void testDeletePizza() throws StockageException{
 		dao.saveNewPizza(new Pizza("TES", "test", 10));
 
 		dao.deletePizza("TES");

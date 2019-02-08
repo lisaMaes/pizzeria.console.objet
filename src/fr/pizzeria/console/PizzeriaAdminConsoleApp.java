@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMemDao;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.service.*;
 
 /**
@@ -23,7 +24,7 @@ public class PizzeriaAdminConsoleApp {
 
 		
 		IPizzaDao iPizzaDao = new PizzaMemDao();
-//		iPizzaDao.initialiseArray();
+		iPizzaDao.initialiseArray();
 
 		do{
 			
@@ -41,9 +42,16 @@ public class PizzeriaAdminConsoleApp {
 		
 			MenuService menuService = MenuServiceFactory.getService(a);
 			
-			if(menuService != null){
+			if(menuService != null){				
 				
-				menuService.executeUC(iPizzaDao, questionUser);
+				try {
+					
+					menuService.executeUC(iPizzaDao, questionUser);
+					
+				} catch (StockageException stockageException) {
+					
+					stockageException.printStackTrace();						
+				}	
 			}
 
 			

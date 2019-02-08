@@ -3,6 +3,7 @@ package fr.pizzeria.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -42,25 +43,29 @@ public class PizzaMemDao implements IPizzaDao{
 
 	public void saveNewPizza(Pizza pizza){		
 			
-		pizzaList.add(pizza);
+			pizzaList.add(pizza);
+		
+
 	}
 	
 	public void updatePizza(String codePizza, Pizza pizza){
-
-		Pizza pizzaFound = this.findPizzaByCode(codePizza);
 	
+			
+		Pizza pizzaFound = this.findPizzaByCode(codePizza);
+		
 		int i = pizzaList.indexOf(pizzaFound);
 
-		pizzaList.set(i, pizza);			
+		pizzaList.set(i, pizza);	
+			
 					
 	}
 	
 	public void deletePizza(String codePizza){
-		
+				
 		Pizza pizzaFound = this.findPizzaByCode(codePizza);
 		
-		pizzaList.remove(pizzaFound.id);		
-		
+		pizzaList.remove(pizzaFound.id);	
+				
 	}
 	
 	public Pizza findPizzaByCode(String codePizza){
