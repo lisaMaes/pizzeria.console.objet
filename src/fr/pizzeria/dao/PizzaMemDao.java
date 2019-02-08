@@ -19,23 +19,19 @@ public class PizzaMemDao implements IPizzaDao{
 	 * @return pizzaArray
 	 */
 	
-	List<Pizza> pizzaList;
+	List<Pizza> pizzaList =  new ArrayList<Pizza>();
 	
 	public void initialiseArray(){
 		
-		//Initialise le tableau pizza
-		pizzaList =  new ArrayList<Pizza>();
-
-		
 		//Rempli le tableau en créant les objets pizza directement
-		pizzaList.add(new Pizza (0, "PEP", "Péperoni", 12.50));
-		pizzaList.add(new Pizza (1, "MAR", "Marguerita", 14.00));
-		pizzaList.add(new Pizza (2, "REIN", "La Reine", 11.50));
-		pizzaList.add(new Pizza (3, "FRO", "La 4 fromages", 12.50));
-		pizzaList.add(new Pizza (4, "CAN", "La cannibale", 12.50));
-		pizzaList.add(new Pizza (5, "SAV", "La Savoyarde", 13.00));
-		pizzaList.add(new Pizza (6, "ORI", "L'orientale", 13.50));
-		pizzaList.add(new Pizza (7, "IND", "L'indienne", 14.00)); 
+		pizzaList.add(new Pizza ("PEP", "Péperoni", 12.50));
+		pizzaList.add(new Pizza ("MAR", "Marguerita", 14.00));
+		pizzaList.add(new Pizza ("REIN", "La Reine", 11.50));
+		pizzaList.add(new Pizza ("FRO", "La 4 fromages", 12.50));
+		pizzaList.add(new Pizza ("CAN", "La cannibale", 12.50));
+		pizzaList.add(new Pizza ("SAV", "La Savoyarde", 13.00));
+		pizzaList.add(new Pizza ("ORI", "L'orientale", 13.50));
+		pizzaList.add(new Pizza ("IND", "L'indienne", 14.00)); 
 		
 	}
 	
@@ -52,10 +48,10 @@ public class PizzaMemDao implements IPizzaDao{
 	public void updatePizza(String codePizza, Pizza pizza){
 
 		Pizza pizzaFound = this.findPizzaByCode(codePizza);
-			
-		int i = pizzaFound.id;
-		
-		pizzaList.set(i,pizza);			
+	
+		int i = pizzaList.indexOf(pizzaFound);
+
+		pizzaList.set(i, pizza);			
 					
 	}
 	

@@ -13,6 +13,13 @@ import fr.pizzeria.model.Pizza;
 public interface IPizzaDao {
 	
 	/**
+	 * Initialise la liste d'exemple de pizza
+	 */
+	
+	void initialiseArray();
+	
+	
+	/**
 	 * Renvoi une collection List de l'objet pizza
 	 * @return pizzaList
 	 */

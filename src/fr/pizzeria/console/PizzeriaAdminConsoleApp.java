@@ -1,6 +1,8 @@
 package fr.pizzeria.console;
 
 import java.util.Scanner;
+
+import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.service.*;
 
@@ -20,8 +22,8 @@ public class PizzeriaAdminConsoleApp {
 		int a = 0;
 
 		
-		PizzaMemDao pizzaMemDao = new PizzaMemDao();
-		pizzaMemDao.initialiseArray();
+		IPizzaDao iPizzaDao = new PizzaMemDao();
+//		iPizzaDao.initialiseArray();
 
 		do{
 			
@@ -41,7 +43,7 @@ public class PizzeriaAdminConsoleApp {
 			
 			if(menuService != null){
 				
-				menuService.executeUC(pizzaMemDao, questionUser);
+				menuService.executeUC(iPizzaDao, questionUser);
 			}
 
 			
