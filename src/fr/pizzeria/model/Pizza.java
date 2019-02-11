@@ -13,6 +13,7 @@ public class Pizza {
 	public String code;
 	public String libelle;
 	public double prix;
+	public CategoriePizza categoriePizza;
 	
 	/**
 	 * 
@@ -22,12 +23,13 @@ public class Pizza {
 	 * @param listPizza array d'objets des pizza
 	 */
 	
-	public 	Pizza(String code, String libelle, double prix){
+	public 	Pizza(String code, String libelle, double prix, CategoriePizza categoriePizza){
 		
 		id = nbPizza++;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		this.categoriePizza = categoriePizza;
 	}
 	
 	/**
@@ -38,11 +40,17 @@ public class Pizza {
 	 * @param prix prix en double
 	 */
 	
-	public Pizza(int id, String code, String libelle, double prix){
+	public Pizza(int id, String code, String libelle, double prix, CategoriePizza categoriePizza){
 		
 		this.id = id;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		this.categoriePizza = categoriePizza;
+	}
+	
+	public String toString(Pizza pizza){
+		
+		return this.id + " -> "+this.code + " -> "+ this.libelle + " ("+ this.prix+" €) cat : "+this.categoriePizza.getCategorie();
 	}
 }

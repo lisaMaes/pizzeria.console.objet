@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.*;
-
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -37,26 +37,44 @@ public class AjouterPizzaService extends MenuService{
 			System.out.println("Veuillez saisir le prix");				
 			double prix = questionUser.nextDouble() ;
 			
+			System.out.println("Veuillez saisir une categorie de pizza");
+			List <String> categorieList = CategoriePizza.findCategoriePizza();
 			
-			//Si toute les valeurs on étaient renseignées
-			if(code != null && libelle != null && prix != 0){
+			for(String categorie : categorieList){
 				
-				pizzaExists = iPizzaDao.pizzaExists(code);
-				
-				if(pizzaExists == false){					
-						
-					List<Pizza> pizzaList = iPizzaDao.findAllPizzas();
-					
-					int id = pizzaList.size();
-					
-					iPizzaDao.saveNewPizza(new Pizza (id, code, libelle, prix));
-												
-
-				}else{
-					
-					throw new SavePizzaException();
-				}
+				System.out.println(" "+categorie+" ");
 			}
+			
+			String categorie = questionUser.next();
+			
+			boolean categorieExists = CategoriePizza.categorieExists(categorie);
+			
+			if(categorieExists == true){
+				
+				//Si toute les valeurs on étaient renseignées
+				if(code != null && libelle != null && prix != 0 && categorie != null){
+					
+					pizzaExists = iPizzaDao.pizzaExists(code);
+					
+					if(pizzaExists == false){					
+							
+						List<Pizza> pizzaList = iPizzaDao.findAllPizzas();
+						
+						int id = pizzaList.size();
+						
+						iPizzaDao.saveNewPizza(new Pizza (id, code, libelle, prix, CategoriePizza.valueOf(categorie.toUpperCase())));
+													
+
+					}else{
+						
+						throw new SavePizzaException();
+					}
+				}
+			}else{
+				throw new FindCategoriePizzaException();
+			}
+			
+			
 			
 		}while(pizzaExists == true);	
 		

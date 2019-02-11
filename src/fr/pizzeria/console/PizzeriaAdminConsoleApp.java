@@ -51,7 +51,8 @@ public class PizzeriaAdminConsoleApp {
 				} catch (StockageException stockageException) {
 					
 					stockageException.printStackTrace();						
-				}	
+				}
+				
 			}
 
 			

@@ -1,9 +1,11 @@
 package fr.pizzeria.service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.*;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -36,24 +38,43 @@ public class ModifierPizzaService extends MenuService {
 			
 			System.out.println("Veuillez saisir le nouveau prix");				
 			double newPrix = questionUser.nextDouble() ;
-					
-			//Si toute les valeurs sont renseignées on modifie les infos
-			if(newCode != null && newLibelle != null && newPrix != 0){
-				
-				pizzaExists = iPizzaDao.pizzaExists(code);
-				
-				if(pizzaExists == true){
-					
-				
-					iPizzaDao.updatePizza(code, new Pizza (newCode, newLibelle, newPrix));
-					
-				}else{
-					
-					throw new UpdatePizzaException();
-				}
-				
 			
+			System.out.println("Veuillez saisir la nouvelle categorie de pizza");
+			List <String> categorieList = CategoriePizza.findCategoriePizza();
+			
+			for(String categorie : categorieList){
+				
+				System.out.println(" "+categorie+" ");
 			}
+			
+			String newCategorie = questionUser.next();
+			
+			boolean categorieExists = CategoriePizza.categorieExists(newCategorie);
+			
+			if(categorieExists == true){
+				
+				//Si toute les valeurs sont renseignées on modifie les infos
+				if(newCode != null && newLibelle != null && newPrix != 0 && newCategorie != null){
+					
+					pizzaExists = iPizzaDao.pizzaExists(code);
+					
+					if(pizzaExists == true){
+						
+					
+						iPizzaDao.updatePizza(code, new Pizza (newCode, newLibelle, newPrix, CategoriePizza.valueOf(newCategorie.toUpperCase())));
+						
+					}else{
+						
+						throw new UpdatePizzaException();
+					}
+					
+				
+				}
+			}else{
+				throw new FindCategoriePizzaException();
+			}
+						
+	
 		}while(pizzaExists == false);
 		
 		System.out.println("Pizza modifiée !!");

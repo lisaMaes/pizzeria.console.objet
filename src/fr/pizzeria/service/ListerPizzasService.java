@@ -26,7 +26,7 @@ public class ListerPizzasService extends MenuService {
 		//Boucle l'affichage des pizzas
 		for(Pizza pizza: pizzaList){
 			
-			System.out.println(pizza.id + " -> "+pizza.code + " -> "+ pizza.libelle + " ("+ pizza.prix+" €)");
+			System.out.println(pizza.toString(pizza));
 		
 		}
 	}
