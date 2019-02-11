@@ -98,4 +98,21 @@ public class PizzaMemDao implements IPizzaDao{
 		
 		return pizzaFound;
 	}
+	
+	public List<Pizza> findPizzaByCategorie(String categorie){
+	
+		List<Pizza> pizzaList = new ArrayList<Pizza>();
+		
+		List<Pizza> allPizzaList = this.findAllPizzas();
+	
+		for(Pizza pizza: allPizzaList){			
+
+			if(pizza.categoriePizza.equals(CategoriePizza.valueOf(categorie.toUpperCase()))){
+		
+				pizzaList.add(pizza);
+			}
+		}
+		
+		return pizzaList;
+	}
 }

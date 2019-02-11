@@ -38,6 +38,11 @@ public class MenuServiceFactory {
 			menuService = new SupprimerPizzaService();		
 			
 			break;
+		case 5:
+			//Lister par catégorie
+			menuService = new ListerPizzaParCategorieService();		
+			
+			break;
 		
 		}
 		

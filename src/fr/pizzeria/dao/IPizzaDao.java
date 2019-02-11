@@ -63,4 +63,12 @@ public interface IPizzaDao {
 	 */
 	boolean pizzaExists(String codePizza);
 	
+	/**
+	 * Renvoi une liste de pizza répondant à la catégorie passée en paramètre
+	 * @param categorie
+	 * @return
+	 */
+	
+	List <Pizza> findPizzaByCategorie(String categorie);
+	
 }
